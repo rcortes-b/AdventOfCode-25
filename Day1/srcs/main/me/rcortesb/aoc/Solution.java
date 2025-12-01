@@ -17,16 +17,14 @@ public class Solution {
 	}
 
 	public void run(List<String> content) {
-		char c = '\0';
 		int value = 0;
 		for (String line : content) {
-			c = line.charAt(0);
 			value = Integer.valueOf(line.substring(1));
 			if (value > rightLimit) {
 				this.passByZero(value / 100);
 				value = value % 100;
 			}
-			this.move(c, value);
+			this.move(line.charAt(0), value);
 			this.isZero();
 		}
 		this.showResolution();
@@ -71,8 +69,8 @@ public class Solution {
 	}
 
 	private void showResolution() {
-		System.out.println("Currently the dial poits to " + dialPoint);
+		System.out.println("Currently the dial points to " + dialPoint);
 		System.out.println("The dial has been zero " + pointZeroAtTheEnd + " times");
-		System.out.println("The dial has passed by zero " + pointToZero + " times");
+		System.out.println("The dial has passed by zero " + pointToZero + " times\n");
 	}
 }

@@ -9,15 +9,19 @@ public class Main {
 	final static String mapPath = "map.txt";
 	final static String mapExamplePath = "map_example.txt";
 	public static void main(String[] args) {
-		List<String> mapExampleContent = getMapContent(mapExamplePath);
+		//List<String> mapExampleContent = getMapContent(mapExamplePath);
 		List<String> mapContent = getMapContent(mapPath);
 		
-		Solution exampleSolution = new Solution();
+		//Solution exampleSolution = new Solution();
 		Solution mySolution = new Solution();
+		
+		long startTime = System.currentTimeMillis();
 
-		exampleSolution.run(mapExampleContent);
-		System.out.print("\n");
+		//exampleSolution.run(mapExampleContent);
 		mySolution.run(mapContent);
+
+		long endTime = System.currentTimeMillis();
+		System.out.println("Duration: " + (endTime - startTime) + "ms");
 	}
 
 	private static List<String> getMapContent(String mapPath) {
