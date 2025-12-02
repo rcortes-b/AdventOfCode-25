@@ -1,4 +1,4 @@
-package srcs.main.me.rcortesb.aoc;
+package srcs.main.me.rcortesb.aocDay1;
 
 import java.util.List;
 
