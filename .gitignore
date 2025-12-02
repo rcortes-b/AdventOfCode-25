@@ -3,3 +3,4 @@ map_example.txt
 bin/
 .vscode
 *.o
+__pycache__/

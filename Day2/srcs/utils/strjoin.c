@@ -24,5 +24,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1_len++;
 	}
 	str[s1_len] = '\0';
+	free((char *)s1);
 	return (str);
 }

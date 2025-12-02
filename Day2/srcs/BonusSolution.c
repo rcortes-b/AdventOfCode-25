@@ -1,29 +1,5 @@
 #include "../inc/Solution.h"
 
-#define READ_SIZE 10
-
-static char *fileName = "map.txt";
-static char *fileNameExample = "map_example.txt";
-
-static char* getMapContent(const char *path) {
-	char *content = NULL;
-	char buff[READ_SIZE];
-	FILE *f = fopen(path, "r");
-	if (!f)
-		return NULL;
-	memset(buff, '\0', READ_SIZE);
-	while (fgets(buff, READ_SIZE, f) != NULL) {
-		int size = strlen(buff);
-		if (!content)
-			content = strdup(buff);
-		else
-			content = ft_strjoin(content, buff);
-		if (!content)
-			return NULL;
-	}
-	return content;
-}
-
 static char *modifyId(char *str) {
 	int size = strlen(str) - 1;
 	while (size >= 0) {
@@ -59,7 +35,7 @@ static bool do_checker(char *str, int size) {
 		if (size % c == 0) {
 			del = c;
 			i = 0;
-			while (del < size) { //123 123 123
+			while (del < size) {
 				if (str[i] != str[del])
 					break ;
 				i++;
@@ -90,29 +66,28 @@ static unsigned long theGoodAlgo(char **ranges) {
 	unsigned long totalIds = 0;
 	while (*ranges != NULL) {
 		char **ids = ft_split(*ranges, '-');
-		char *new = strdup(*ids);
+		char *new = ft_strdup(*ids);
 		int minRange = atoi(*ids);
 		int maxRange = atoi(ids[1]);
 		while (minRange++ <= maxRange) {
 			new = checkInvalid(new, &totalIds);
 		}
 		*ranges++;
+		free_mem(ids, new);
 	}
 	return totalIds;
 }
 
 int main(int argc, char **argv) {
 	if (argc != 2)
-		return 1;
-	char *content = NULL;
-	if (!strcmp(argv[1], fileName))
-		content = getMapContent(fileName);
-	else
-		content = getMapContent(fileNameExample);
+		return (printf("Map path as argument is mandatory.\n"), 1);
+	char *content = getMapContent(argv[1]);
 	if(!content)
-		return (1);
+		return (printf("File error.\n"), 1);
 	char **ranges = ft_split(content, ',');
-
+	if (!ranges)
+		return (free(content), printf("Split error.\n"), 1);
 	printf("\n%ld\n", theGoodAlgo(ranges));
+	free_mem(ranges, content);
 	return (0);
 }

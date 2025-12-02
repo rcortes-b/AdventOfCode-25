@@ -10,6 +10,9 @@
 
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*getMapContent(const char *path);
+char	*ft_strdup(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+void free_mem(char **arr, char *str);
 
 #endif
