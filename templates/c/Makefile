@@ -5,7 +5,7 @@ FLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 SRCS_COMMON = srcs/utils/split.c srcs/utils/strjoin.c srcs/utils/strlcpy.c srcs/utils/input.c srcs/utils/free_mem.c srcs/utils/ft_strdup.c
-HEAD = includes/Solution.h
+HEAD = inc/Solution.h
 
 # Default sources (normal)
 SRCS = srcs/Solution.c $(SRCS_COMMON)
