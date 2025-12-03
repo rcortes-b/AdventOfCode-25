@@ -38,11 +38,7 @@ class Solution:
 		size = len(batteries)
 		i = 1
 		while (i < size):
-			if (batteries[i] < c and gap > (size - i)):
-				batteries = batteries[:i] + "".join(c) + batteries[i + 1:]
-				batteries = self.fillWithZeros(batteries, i + 1)
-				return batteries
-			elif (batteries[i] < c and gap == (size - i)):
+			if (batteries[i] < c and gap >= (size - i)):
 				batteries = batteries[:i] + "".join(c) + batteries[i + 1:]
 				batteries = self.fillWithZeros(batteries, i + 1)
 				return batteries
