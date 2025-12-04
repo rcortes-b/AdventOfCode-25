@@ -1,20 +1,22 @@
 #include "../inc/Solution.hpp"
 #include "../inc/main.hpp"
 
-Solution::Solution()
+Solution::Solution(std::vector<std::string> &content)
+{
+	this->content = content;
+}
+
+void Solution::run()
 {
 
 }
 
-void Solution::run(std::string &content)
+void Solution::runBonus()
 {
-	if (content.empty())
-		return ;
+
 }
 
-void Solution::run(std::vector<std::string> &content)
+void Solution::showResolution()
 {
-	if (content.size() <= 1)
-		return ;
-
+	std::cout << "The solution is " << " " << std::endl;
 }

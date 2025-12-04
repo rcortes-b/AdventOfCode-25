@@ -8,8 +8,7 @@ int main(int argc, char **argv) {
 
 	FileParsing fp = FileParsing(argv[1]);
 	
-	/* Parse input */
-	std::vector<std::string> contentVector = fp.getContentVector();
+ 	std::vector<std::string> contentVector = fp.getContentVector();
 
 	/* Load Solution Class */
 	Solution solution = Solution(contentVector);

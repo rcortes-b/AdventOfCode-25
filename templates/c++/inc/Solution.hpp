@@ -5,10 +5,12 @@
 
 class Solution {
 	private:
+			std::vector<std::string> content;
 	public:
-			Solution();
-			void run(std::string &content);
-			void run(std::vector<std::string> &content);
+			Solution(std::vector<std::string> &content);
+			void run();
+			void runBonus();
+			void showResolution();
 };
 
 #endif

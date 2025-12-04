@@ -1,6 +1,6 @@
 #include "../../inc/FileParsing.hpp"
 
-FileParsing::FileParsing(char *path)
+FileParsing::FileParsing(const char *path)
 {
 	this->path = std::string(path);
 	std::ifstream myFile;

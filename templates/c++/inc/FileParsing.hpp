@@ -12,7 +12,7 @@ class FileParsing {
 			std::string		content;
 			std::vector<std::string> contentVector;
 	public:
-			FileParsing(char *path);
+			FileParsing(const char *path);
 			void openFile(std::ifstream &myFile);
 			void closeFile(std::ifstream &myFile);
 			void readFile(std::ifstream &myFile);

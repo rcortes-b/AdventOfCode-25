@@ -7,7 +7,8 @@
 #include <map>
 #include <iterator>
 #include <stdexcept>
-
+#include <chrono>
+#include <algorithm>
 
 char	*getMapContent(const char *path);
 void free_mem(char **arr, char *str);

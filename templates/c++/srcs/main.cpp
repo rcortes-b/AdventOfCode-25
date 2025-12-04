@@ -2,30 +2,38 @@
 #include "../inc/FileParsing.hpp"
 #include "../inc/Solution.hpp"
 
-int main(int argc, char **argv) {
-	if (argc != 2)
-		return (printf("Map path as argument is mandatory.\n"), 1);
+const char *input = "map.txt";
+const char *inputExample = "map_example.txt";
 
-	FileParsing fp = FileParsing(argv[1]);
+int main() {
+	FileParsing fpExample = FileParsing(inputExample);
+	FileParsing fp = FileParsing(input);
 	
-	/* Parse input */
-	
+	/*
+	Get input --- Instead of a vector i can have a unique string if the input is a single line
+	std::string contentExample = fpExample.getContent();
 	std::string content = fp.getContent();
-	std::cout << "Unique line: " << content << std::endl;
-	std::vector<std::string> contentVector = fp.getContentVector();
-	std::cout << "\nParsed Lines in Vector" << std::endl;
-	for (itVec it = contentVector.begin(); it != contentVector.end(); it++)
-		std::cout << *it << std::endl;
+	*/
+	std::vector<std::string> contentExample = fpExample.getContentVector();
+	std::vector<std::string> content = fp.getContentVector();
 
 	/* Load Solution Class */
-	Solution solution = Solution();
-	Solution solutionExample = Solution();
+	Solution solutionExample = Solution(contentExample);
+	Solution solution = Solution(content);
 
-	solutionExample.run(content);
-	solutionExample.run(contentVector);
+	solutionExample.run();
+	solutionExample.runBonus();
 
-	solution.run(content);
-	solution.run(contentVector);
+	auto start = std::chrono::high_resolution_clock::now();
+	solution.run();
+	auto end = std::chrono::high_resolution_clock::now();
+	solution.runBonus();
+	auto endBonus = std::chrono::high_resolution_clock::now();
+	solution.showResolution();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	auto durationBonus = std::chrono::duration_cast<std::chrono::milliseconds>(endBonus - end);
+	std::cout << "The level 1 duration was " << duration.count() << "ms" << std::endl;
+	std::cout << "The level 2 duration was " << duration.count() << "ms" << std::endl;
 	
 	return (0);
 }
