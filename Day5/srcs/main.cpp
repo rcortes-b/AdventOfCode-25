@@ -5,6 +5,8 @@
 const char *input = "map.txt";
 const char *inputExample = "map_example.txt";
 
+// too low 1813656443
+
 int main() {
 	FileParsing fpExample = FileParsing(inputExample);
 	FileParsing fp = FileParsing(input);
@@ -14,15 +16,19 @@ int main() {
 	std::string contentExample = fpExample.getContent();
 	std::string content = fp.getContent();
 	*/
-	std::vector<std::string> contentExample = fpExample.getContentVector();
-	std::vector<std::string> content = fp.getContentVector();
+	std::vector<unsigned long> freshIdsExample = fpExample.getFreshIds();
+	std::vector<unsigned long> availableIdsExample = fpExample.getAvailableIds();
+
+	std::vector<unsigned long> freshIds = fp.getFreshIds();
+	std::vector<unsigned long> availableIds = fp.getAvailableIds();
 
 	/* Load Solution Class */
-	Solution solutionExample = Solution(contentExample);
-	Solution solution = Solution(content);
+	Solution solutionExample = Solution(freshIdsExample, availableIdsExample);
+	Solution solution = Solution(freshIds, availableIds);
 
 	solutionExample.run();
 	solutionExample.runBonus();
+	solutionExample.showResolution();
 
 	auto start = std::chrono::high_resolution_clock::now();
 	solution.run();
