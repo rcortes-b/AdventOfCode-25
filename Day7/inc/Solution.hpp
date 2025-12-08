@@ -11,6 +11,11 @@ class Solution {
 			unsigned long** timelinesMemo;
 	public:
 			Solution(std::vector<std::string> &content);
+			~Solution() {
+				for (size_t y = 0; y < content.size(); y++)
+					delete[] timelinesMemo[y];
+				delete[] timelinesMemo;
+			}
 			void run();
 			void runBonus();
 			void showResolution();

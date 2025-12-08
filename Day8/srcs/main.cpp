@@ -8,30 +8,22 @@ const char *inputExample = "map_example.txt";
 int main() {
 	FileParsing fpExample = FileParsing(inputExample);
 	FileParsing fp = FileParsing(input);
-	
-	/*
-	Get input --- Instead of a vector i can have a unique string if the input is a single line
-	std::string contentExample = fpExample.getContent();
-	std::string content = fp.getContent();
-	*/
+
 	std::vector<std::string> contentExample = fpExample.getContentVector();
 	std::vector<std::string> content = fp.getContentVector();
 
 	/* Load Solution Class */
-	Solution solutionExample = Solution(contentExample);
-	Solution solution = Solution(content);
+	Solution solutionExample = Solution(contentExample, 10);
+	Solution solution = Solution(content, 1000);
 
-	//solutionExample.run();
-	//return 0;
-	solutionExample.runBonus();
+	solutionExample.run();
+	solutionExample.showResolution();
 	auto start = std::chrono::high_resolution_clock::now();
 	solution.run();
 	auto end = std::chrono::high_resolution_clock::now();
-	solution.runBonus();
-	auto endBonus = std::chrono::high_resolution_clock::now();
 	solution.showResolution();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-	auto durationBonus = std::chrono::duration_cast<std::chrono::milliseconds>(endBonus - end);
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(solution.getFirstLevelEndTime() - start);
+	auto durationBonus = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 	std::cout << "The level 1 duration was " << duration.count() << "ms" << std::endl;
 	std::cout << "The level 2 duration was " << durationBonus.count() << "ms" << std::endl;
 	

@@ -44,6 +44,7 @@ void Solution::runBonus()
 	auto len = content[0].length();
 
 	timelinesMemo = new unsigned long*[content.size() + 1];
+	timelinesMemo[content.size()] = 0;
 	for (int y = 0; y < (int)content.size(); y++)
 		timelinesMemo[y] = new unsigned long[len + 1];
 
