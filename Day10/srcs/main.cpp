@@ -17,6 +17,7 @@ int main() {
 	Solution solution = Solution(content);
 
 	solutionExample.run();
+	solutionExample.runBonus();
 	solutionExample.showResolution();
 	auto start = std::chrono::high_resolution_clock::now();
 	solution.run();
